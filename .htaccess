@@ -1,0 +1,38 @@
+
+SetEnv HTTP_BASE_URL INSERT_THE_HTTP_BASE_URL_STRING_HERE
+SetEnv HTTP_BASE_URL_LOCAL INSERT_THE_HTTP_BASE_URL_LOCAL_STRING_HERE
+
+SetEnv HTTP_DB_HOSTNAME INSERT_THE_HTTP_DB_HOSTNAME_STRING_HERE
+SetEnv HTTP_DB_USERNAME INSERT_THE_HTTP_DB_USERNAME_STRING_HERE
+SetEnv HTTP_DB_PASSWORD INSERT_THE_HTTP_DB_PASSWORD_STRING_HERE
+SetEnv HTTP_DB_NAME INSERT_THE_HTTP_DB_NAME_STRING_HERE
+
+SetEnv HTTP_GOOGLE_CAPTCHA_CODE INSERT_THE_HTTP_GOOGLE_CAPTCHA_CODE_STRING_HERE
+SetEnv HTTP_GOOGLE_CAPTCHA_SITEKEY INSERT_THE_HTTP_GOOGLE_CAPTCHA_SITEKEY_STRING_HERE
+
+SetEnv HTTP_SMTP_SERVER INSERT_THE_HTTP_SMTP_SERVER_STRING_HERE
+SetEnv HTTP_SMTP_USER INSERT_THE_HTTP_SMTP_USER_STRING_HERE
+SetEnv HTTP_SMTP_PASSWORD INSERT_THE_HTTP_SMTP_PASSWORD_STRING_HERE
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #RewriteBase /
+
+    #RewriteEngine On
+    #RewriteCond %{HTTP_HOST} ^familyhome.cl [NC]
+    #RewriteRule ^(.*)$ http://www.familyhome.cl/$1 [L,R=301]
+
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /index.php
+</IfModule>
