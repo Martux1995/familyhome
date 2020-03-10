@@ -1,0 +1,43 @@
+.carousel-custom-control:hover {
+    background: rgba(0,0,0,0.4);
+}
+
+.carousel {
+    min-height: 600px;
+    max-height: 600px;
+}
+
+.carousel > .carousel-inner {
+    max-width: inherit;
+    max-height: inherit;
+    min-height: inherit;
+    min-width: inherit;
+}
+
+.carousel > .carousel-inner > .carousel-item {
+    max-width: inherit;
+    max-height: inherit;
+    min-height: inherit;
+    min-width: inherit;
+}
+
+.carousel-item.active {
+    display: inline-flex;
+    justify-content: center;
+}
+
+.carousel > .carousel-inner > .carousel-item > img {
+    max-width: 100%;
+    max-height: inherit;
+    height: auto;
+}
+
+
+@media(max-width: 575px) {
+    .carousel {
+        margin: 10px;
+
+        max-height: 400px;
+        min-height: 400px;
+    }
+}
